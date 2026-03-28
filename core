@@ -1,0 +1,9 @@
+from rich import print as rprint
+
+def start(config_path: str):
+    rprint(f"[green]Monitoring started with config:[/green] {config_path}")
+    rprint("[yellow]Watching for suspicious activity...[/yellow]")
+    # Add your monitoring logic here
+
+def waffle_mode():
+    rprint("[bold cyan]Serving fresh monitoring insights with extra syrup![/bold cyan]")
