@@ -1,24 +1,29 @@
+import typer
+from rich.console import Console
+from rich.panel import Panel
 
-#### `pyproject.toml`
-```toml
-[project]
-name = "vigilant-waffle"
-version = "0.1.0"
-description = "A vigilant monitoring tool with a waffle twist"
-readme = "README.md"
-requires-python = ">=3.11"
-license = {text = "MIT"}
-authors = [{name = "Your Name"}]
+from vigilant_waffle.core import monitor, waffle_mode
 
-dependencies = [
-    "rich>=13.7.0",
-    "typer>=0.12.0",
-    "pyyaml>=6.0",
-    "watchdog>=4.0.0",
-]
+app = typer.Typer(help="Vigilant Waffle - Monitoring with personality")
+console = Console()
 
-[project.scripts]
-vigilant-waffle = "vigilant_waffle.main:app"
+@app.command()
+def monitor(config: str = "config.yaml"):
+    """Start the vigilant monitoring system"""
+    console.print(Panel.fit("[bold yellow]Starting Vigilant Waffle Monitor[/bold yellow]"))
+    monitor.start(config)
 
-[tool.ruff]
-line-length = 100
+@app.command()
+def waffle():
+    """Activate maximum waffle mode"""
+    console.print("[bold magenta]🧇 Waffle Mode Activated! 🧇[/bold magenta]")
+    waffle_mode.activate()
+
+@app.command()
+def version():
+    """Show version"""
+    from vigilant_waffle import __version__
+    console.print(f"[bold]vigilant-waffle[/bold] v{__version__}")
+
+if __name__ == "__main__":
+    app()
