@@ -1,0 +1,18 @@
+vigilant-waffle/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── vigilant_waffle/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── core.py
+│   └── utils.py
+├── tests/
+│   ├── __init__.py
+│   └── test_core.py
+├── README.md
+├── LICENSE
+├── pyproject.toml
+├── requirements.txt
+├── .gitignore
+└── Makefile
